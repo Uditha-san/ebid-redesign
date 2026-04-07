@@ -526,6 +526,71 @@ body {
   font-weight: 600;
 }
 
+/* Product Action Buttons */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.product-btn-primary {
+  background-color: var(--secondary);
+  color: var(--bg-white);
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.product-btn-primary:hover {
+  background-color: var(--secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.product-btn-secondary {
+  background-color: var(--bg-light);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  flex: 1;
+  width: 100%;
+}
+
+.product-btn-secondary:hover {
+  background-color: var(--border-light);
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+.product-btn-wishlist {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  width: 100%;
+}
+
+.product-btn-wishlist:hover {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  background-color: #fffaf5;
+}
+
 /* Footer Mockup */
 .footer {
   background-color: var(--primary);
@@ -602,10 +667,13 @@ body {
   background-color: var(--bg-white);
   border-radius: var(--radius-lg);
   width: 90%;
-  max-width: 500px;
+  max-width: 700px;
+  max-height: 85vh;
   box-shadow: var(--shadow-hover);
   animation: slideUp 0.3s ease;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-header {
@@ -627,6 +695,8 @@ body {
   color: var(--text-muted);
   font-size: 1rem;
   line-height: 1.5;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .modal-footer {
@@ -636,6 +706,7 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 /* Toast Styling */

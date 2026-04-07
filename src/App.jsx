@@ -25,12 +25,21 @@ const CarIcon = () => <svg width="28" height="28" viewBox="0 0 24 24" fill="none
 
 const categories = [
   { name: "Antiques", count: "1,319", Icon: TagIcon },
+  { name: "Art", count: "92,110", Icon: GemIcon },
   { name: "Books & Comics", count: "884,420", Icon: BookIcon },
   { name: "Collectibles", count: "648,451", Icon: StarIcon },
   { name: "Electronics", count: "28,993", Icon: LaptopIcon },
-  { name: "Jewelry", count: "16,662", Icon: GemIcon },
-  { name: "Cars & Vehicles", count: "20,111", Icon: CarIcon }
+  { name: "Home & Garden", count: "214,006", Icon: TagIcon },
+  { name: "Sport Memorabilia", count: "77,483", Icon: StarIcon },
+  { name: "Whatever's Left", count: "8,912", Icon: CarIcon }
 ];
+
+const testImages = {
+  watch: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=400",
+  book: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400",
+  console: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&q=80&w=400",
+  desk: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=400",
+};
 
 const mockProducts = [
   {
@@ -41,35 +50,306 @@ const mockProducts = [
     bids: 12,
     timeLeft: "2h 15m",
     category: "Antiques",
-    image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=400",
+    image: testImages.watch,
   },
   {
     id: 2,
+    title: "Antique Victorian Mahogany Writing Desk - 19th Century",
+    price: "$850.00",
+    type: "Buy Now",
+    condition: "Good",
+    category: "Antiques",
+    image: testImages.desk,
+  },
+  {
+    id: 3,
+    title: "1960s Brass Desk Clock — Working, Clean Face",
+    price: "$68.00",
+    type: "Buy Now",
+    condition: "Very Good",
+    category: "Antiques",
+    image: testImages.watch,
+  },
+  {
+    id: 4,
+    title: "Antique-Style Table Lamp (Warm Brass Finish)",
+    price: "$39.00",
+    type: "Auction",
+    bids: 7,
+    timeLeft: "6h 05m",
+    category: "Antiques",
+    image: testImages.desk,
+  },
+
+  {
+    id: 5,
+    title: "Original Abstract Canvas (Signed) — Modern Wall Art",
+    price: "$120.00",
+    type: "Buy Now",
+    condition: "Excellent",
+    category: "Art",
+    image: testImages.desk,
+  },
+  {
+    id: 6,
+    title: "Limited-Run Art Print — Gallery-Quality Paper",
+    price: "$35.00",
+    type: "Auction",
+    bids: 18,
+    timeLeft: "1d 3h",
+    category: "Art",
+    image: testImages.book,
+  },
+  {
+    id: 7,
+    title: "Handmade Ceramic Vase — Minimal White Glaze",
+    price: "$42.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Art",
+    image: testImages.desk,
+  },
+  {
+    id: 8,
+    title: "Vintage Film Poster Reprint — A2 Size",
+    price: "$19.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Art",
+    image: testImages.book,
+  },
+
+  {
+    id: 9,
     title: "First Edition Harry Potter and the Philosopher's Stone",
     price: "$1,200.00",
     type: "Buy Now",
     condition: "Like New",
     category: "Books & Comics",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400",
+    image: testImages.book,
   },
   {
-    id: 3,
+    id: 10,
+    title: "Classic Comic Lot (10 Issues) — Bagged & Boarded",
+    price: "$54.00",
+    type: "Auction",
+    bids: 9,
+    timeLeft: "9h 10m",
+    category: "Books & Comics",
+    image: testImages.book,
+  },
+  {
+    id: 11,
+    title: "Hardcover Mystery Bundle — 5 Books, Great Condition",
+    price: "$26.00",
+    type: "Buy Now",
+    condition: "Very Good",
+    category: "Books & Comics",
+    image: testImages.book,
+  },
+  {
+    id: 12,
+    title: "Collector's Manga Volume (Out of Print)",
+    price: "$18.00",
+    type: "Auction",
+    bids: 5,
+    timeLeft: "3h 40m",
+    category: "Books & Comics",
+    image: testImages.book,
+  },
+
+  {
+    id: 13,
+    title: "Retro Trading Card Binder — Mixed Set Included",
+    price: "$29.00",
+    type: "Buy Now",
+    condition: "Good",
+    category: "Collectibles",
+    image: testImages.watch,
+  },
+  {
+    id: 14,
+    title: "Limited Edition Coin Replica — Display Case",
+    price: "$65.00",
+    type: "Auction",
+    bids: 14,
+    timeLeft: "12h 25m",
+    category: "Collectibles",
+    image: testImages.watch,
+  },
+  {
+    id: 15,
+    title: "Vintage Pin Set (12 pcs) — Enamel & Metal",
+    price: "$22.00",
+    type: "Buy Now",
+    condition: "Very Good",
+    category: "Collectibles",
+    image: testImages.desk,
+  },
+  {
+    id: 16,
+    title: "Collector Figure — Boxed, Display Ready",
+    price: "$48.00",
+    type: "Auction",
+    bids: 11,
+    timeLeft: "5h 55m",
+    category: "Collectibles",
+    image: testImages.desk,
+  },
+
+  {
+    id: 17,
     title: "Sony PlayStation 5 Console - Disc Edition (Brand New)",
     price: "$480.00",
     type: "Auction",
     bids: 35,
     timeLeft: "45m",
     category: "Electronics",
-    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&q=80&w=400",
+    image: testImages.console,
   },
   {
-    id: 4,
-    title: "Antique Victorian Mahogany Writing Desk - 19th Century",
-    price: "$850.00",
+    id: 18,
+    title: "Wireless Noise-Canceling Headphones — All-Day Battery",
+    price: "$79.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Electronics",
+    image: testImages.console,
+  },
+  {
+    id: 19,
+    title: "Refurbished Smartphone — Unlocked, 128GB",
+    price: "$149.00",
+    type: "Buy Now",
+    condition: "Refurbished",
+    category: "Electronics",
+    image: testImages.console,
+  },
+  {
+    id: 20,
+    title: "Portable Bluetooth Speaker — Deep Bass",
+    price: "$24.00",
+    type: "Auction",
+    bids: 21,
+    timeLeft: "8h 05m",
+    category: "Electronics",
+    image: testImages.console,
+  },
+
+  {
+    id: 21,
+    title: "Solid Wood Side Table — Compact, Easy Assembly",
+    price: "$59.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Home & Garden",
+    image: testImages.desk,
+  },
+  {
+    id: 22,
+    title: "Indoor Plant Pot Set — 3 Sizes (Matte Finish)",
+    price: "$18.00",
+    type: "Auction",
+    bids: 13,
+    timeLeft: "10h 30m",
+    category: "Home & Garden",
+    image: testImages.desk,
+  },
+  {
+    id: 23,
+    title: "Kitchen Storage Jars — Airtight (Set of 6)",
+    price: "$27.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Home & Garden",
+    image: testImages.book,
+  },
+  {
+    id: 24,
+    title: "Modern Desk Organizer — Minimal Steel Design",
+    price: "$15.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Home & Garden",
+    image: testImages.book,
+  },
+
+  {
+    id: 25,
+    title: "Signed Team Jersey (Framed) — Certificate Included",
+    price: "$210.00",
+    type: "Auction",
+    bids: 16,
+    timeLeft: "1d 1h",
+    category: "Sport Memorabilia",
+    image: testImages.watch,
+  },
+  {
+    id: 26,
+    title: "Collector Baseball Card — Protective Case",
+    price: "$34.00",
+    type: "Buy Now",
+    condition: "Very Good",
+    category: "Sport Memorabilia",
+    image: testImages.watch,
+  },
+  {
+    id: 27,
+    title: "Game Day Cap — Embroidered, Adjustable Fit",
+    price: "$12.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Sport Memorabilia",
+    image: testImages.desk,
+  },
+  {
+    id: 28,
+    title: "Vintage Sports Program — Clean Pages, Great Cover",
+    price: "$17.00",
+    type: "Auction",
+    bids: 6,
+    timeLeft: "7h 20m",
+    category: "Sport Memorabilia",
+    image: testImages.book,
+  },
+
+  {
+    id: 29,
+    title: "Mystery Box: Mixed Household Items (Fun Surprise Lot)",
+    price: "$9.00",
+    type: "Auction",
+    bids: 28,
+    timeLeft: "2h 05m",
+    category: "Whatever's Left",
+    image: testImages.desk,
+  },
+  {
+    id: 30,
+    title: "Bundle Deal: Cables & Accessories — Assorted",
+    price: "$11.00",
     type: "Buy Now",
     condition: "Good",
-    category: "Home & Garden",
-    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=400",
+    category: "Whatever's Left",
+    image: testImages.console,
+  },
+  {
+    id: 31,
+    title: "Assorted Stickers Pack — 50 pcs",
+    price: "$6.00",
+    type: "Buy Now",
+    condition: "New",
+    category: "Whatever's Left",
+    image: testImages.book,
+  },
+  {
+    id: 32,
+    title: "Random Finds Lot — Great for Resellers",
+    price: "$14.00",
+    type: "Auction",
+    bids: 10,
+    timeLeft: "4h 40m",
+    category: "Whatever's Left",
+    image: testImages.watch,
   }
 ];
 
@@ -86,7 +366,7 @@ const Modal = ({ isOpen, title, body, onClose, actions }) => {
           <button className="icon-btn" onClick={onClose} aria-label="Close"><XIcon /></button>
         </div>
         <div className="modal-body">
-          <p>{body}</p>
+          {typeof body === 'string' ? <p>{body}</p> : body}
         </div>
         {actions && (
           <div className="modal-footer">
@@ -94,6 +374,657 @@ const Modal = ({ isOpen, title, body, onClose, actions }) => {
           </div>
         )}
       </div>
+    </div>
+  );
+};
+
+const PlatinumUpgradePanel = ({ onClose, showToast, onLearnMore }) => {
+  return (
+    <div style={{ display: 'grid', gap: '1rem' }}>
+      <div style={{
+        padding: '0.9rem 1rem',
+        borderRadius: 14,
+        background: 'linear-gradient(135deg, #0b1120 0%, #1e293b 100%)',
+        color: 'white',
+        border: '1px solid rgba(255,255,255,0.08)'
+      }}>
+        <div style={{ fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.3px' }}>Platinum Lifetime</div>
+        <div style={{ color: '#cbd5e1', marginTop: '0.25rem', fontSize: '0.95rem' }}>
+          One-time upgrade. Keep more profit and unlock premium seller tools.
+        </div>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', marginTop: '0.75rem' }}>
+          <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--secondary)' }}>$49.99</div>
+          <div style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>one-time payment</div>
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gap: '0.6rem' }}>
+        <div style={{ fontWeight: 800, color: 'var(--primary)' }}>What you get</div>
+        <div style={{ display: 'grid', gap: '0.5rem' }}>
+          {[
+            'Zero listing fees for life',
+            'Priority customer support',
+            'Boosted visibility in search (demo)',
+            'Seller dashboard insights (demo)'
+          ].map((text) => (
+            <div
+              key={text}
+              style={{
+                display: 'flex',
+                gap: '0.6rem',
+                alignItems: 'flex-start',
+                padding: '0.75rem 0.85rem',
+                borderRadius: 12,
+                border: '1px solid var(--border-light)',
+                background: 'var(--bg-white)'
+              }}
+            >
+              <div style={{
+                width: 10,
+                height: 10,
+                borderRadius: 999,
+                background: 'var(--secondary)',
+                marginTop: '0.35rem',
+                flex: '0 0 auto'
+              }} />
+              <div style={{ color: 'var(--text-main)', fontWeight: 600 }}>{text}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '0.25rem' }}>
+        <button className="btn btn-outline" type="button" onClick={onLearnMore}>Learn more</button>
+        <button
+          className="btn btn-primary"
+          type="button"
+          onClick={() => {
+            showToast('Platinum upgrade started (demo).');
+            onClose();
+          }}
+        >
+          Upgrade now
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const PlatinumLearnMorePanel = ({ onClose, showToast, onUpgrade }) => {
+  return (
+    <div style={{ display: 'grid', gap: '1rem' }}>
+      <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+        Platinum Lifetime is designed for sellers who want predictable costs and stronger tools.
+      </div>
+
+      <div style={{
+        border: '1px solid var(--border-light)',
+        background: 'var(--bg-white)',
+        borderRadius: 14,
+        overflow: 'hidden'
+      }}>
+        <div style={{ padding: '0.9rem 1rem', borderBottom: '1px solid var(--border-light)', fontWeight: 800, color: 'var(--primary)' }}>
+          Highlights
+        </div>
+        <div style={{ padding: '0.9rem 1rem', display: 'grid', gap: '0.7rem' }}>
+          <div><span style={{ fontWeight: 800, color: 'var(--primary)' }}>Fees:</span> Zero listing fees for life (concept)</div>
+          <div><span style={{ fontWeight: 800, color: 'var(--primary)' }}>Stores:</span> Create a branded storefront and promote your best items</div>
+          <div><span style={{ fontWeight: 800, color: 'var(--primary)' }}>Support:</span> Faster help for account and listing issues</div>
+          <div><span style={{ fontWeight: 800, color: 'var(--primary)' }}>Insights:</span> Track performance and optimize listings (demo)</div>
+        </div>
+      </div>
+
+      <div style={{
+        padding: '0.9rem 1rem',
+        borderRadius: 14,
+        background: '#fff7ed',
+        border: '1px solid #fed7aa',
+        color: '#9a3412',
+        fontSize: '0.95rem'
+      }}>
+        Tip: If you list often, Platinum can pay for itself quickly.
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.75rem', alignItems: 'center', marginTop: '0.25rem' }}>
+        <a
+          href="#"
+          style={{ fontSize: '0.9rem', color: 'var(--secondary)', textDecoration: 'none', fontWeight: 600 }}
+          onClick={(e) => {
+            e.preventDefault();
+            showToast('Opening Platinum FAQ (demo).');
+          }}
+        >
+          Read Platinum FAQ
+        </a>
+        <div style={{ display: 'flex', gap: '0.75rem' }}>
+          <button className="btn btn-outline" type="button" onClick={onClose}>Close</button>
+          <button className="btn btn-primary" type="button" onClick={onUpgrade}>Upgrade</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const DailyDealsPanel = ({ deals, onClose, onShopCategory, onViewDeal }) => {
+  return (
+    <div style={{ display: 'grid', gap: '1rem' }}>
+      <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+        Today’s top picks across the marketplace. Limited-time prices while inventory lasts.
+      </div>
+
+      <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '55vh', overflowY: 'auto', paddingRight: '0.25rem' }}>
+        {deals.map((deal) => (
+          <div
+            key={deal.id}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '88px 1fr',
+              gap: '0.9rem',
+              padding: '0.85rem',
+              border: '1px solid var(--border-light)',
+              borderRadius: 14,
+              background: 'var(--bg-white)'
+            }}
+          >
+            <div style={{
+              width: 88,
+              height: 70,
+              borderRadius: 12,
+              overflow: 'hidden',
+              background: 'var(--bg-light)'
+            }}>
+              <img src={deal.image} alt={deal.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+
+            <div style={{ display: 'grid', gap: '0.35rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.75rem', alignItems: 'start' }}>
+                <div style={{ fontWeight: 700, color: 'var(--primary)', lineHeight: 1.2 }}>
+                  {deal.title}
+                </div>
+                <div style={{ fontWeight: 800, color: 'var(--secondary)', whiteSpace: 'nowrap' }}>
+                  {deal.price}
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                <span style={{
+                  fontSize: '0.78rem',
+                  padding: '0.2rem 0.55rem',
+                  borderRadius: 999,
+                  background: '#fff7ed',
+                  border: '1px solid #fed7aa',
+                  color: '#9a3412',
+                  fontWeight: 700
+                }}>
+                  {deal.dealTag}
+                </span>
+                <a
+                  href="#"
+                  style={{ fontSize: '0.85rem', color: 'var(--secondary)', textDecoration: 'none', fontWeight: 600 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onShopCategory(deal.category);
+                  }}
+                >
+                  {deal.category}
+                </a>
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'flex-end', marginTop: '0.2rem' }}>
+                <button className="btn btn-outline" type="button" onClick={() => onViewDeal(deal)}>
+                  View
+                </button>
+                <button className="btn btn-primary" type="button" onClick={() => onShopCategory(deal.category)}>
+                  Shop deals
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '0.25rem' }}>
+        <button className="btn btn-outline" type="button" onClick={onClose}>Close</button>
+      </div>
+    </div>
+  );
+};
+
+const AuthPanel = ({ onClose, showToast }) => {
+  const [mode, setMode] = useState('signin');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const resetErrors = () => setError('');
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    resetErrors();
+
+    if (!email.trim() || !password.trim()) {
+      setError('Please enter your email and password.');
+      return;
+    }
+
+    if (mode === 'register') {
+      if (password.length < 6) {
+        setError('Password must be at least 6 characters.');
+        return;
+      }
+      if (password !== confirmPassword) {
+        setError('Passwords do not match.');
+        return;
+      }
+
+      showToast(`Account created for ${email}`);
+      onClose();
+      return;
+    }
+
+    showToast(`Signed in as ${email}`);
+    onClose();
+  };
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem' }}>
+        <button
+          className={`btn ${mode === 'signin' ? 'btn-primary' : 'btn-outline'}`}
+          type="button"
+          onClick={() => {
+            setMode('signin');
+            setConfirmPassword('');
+            resetErrors();
+          }}
+        >
+          Sign In
+        </button>
+        <button
+          className={`btn ${mode === 'register' ? 'btn-primary' : 'btn-outline'}`}
+          type="button"
+          onClick={() => {
+            setMode('register');
+            resetErrors();
+          }}
+        >
+          Create Account
+        </button>
+      </div>
+
+      <form onSubmit={onSubmit}>
+        <div style={{ display: 'grid', gap: '0.75rem' }}>
+          <label style={{ display: 'grid', gap: '0.35rem' }}>
+            <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Email</span>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="you@example.com"
+              style={{
+                padding: '0.75rem 0.9rem',
+                borderRadius: 10,
+                border: '1px solid var(--border)',
+                outline: 'none',
+                background: 'var(--bg-light)'
+              }}
+            />
+          </label>
+
+          <label style={{ display: 'grid', gap: '0.35rem' }}>
+            <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Password</span>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder={mode === 'register' ? 'At least 6 characters' : 'Your password'}
+              style={{
+                padding: '0.75rem 0.9rem',
+                borderRadius: 10,
+                border: '1px solid var(--border)',
+                outline: 'none',
+                background: 'var(--bg-light)'
+              }}
+            />
+          </label>
+
+          {mode === 'register' && (
+            <label style={{ display: 'grid', gap: '0.35rem' }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Confirm password</span>
+              <input
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                type="password"
+                placeholder="Re-enter password"
+                style={{
+                  padding: '0.75rem 0.9rem',
+                  borderRadius: 10,
+                  border: '1px solid var(--border)',
+                  outline: 'none',
+                  background: 'var(--bg-light)'
+                }}
+              />
+            </label>
+          )}
+
+          {error && (
+            <div style={{
+              padding: '0.75rem 0.9rem',
+              borderRadius: 10,
+              background: '#fff7ed',
+              border: '1px solid #fed7aa',
+              color: '#9a3412',
+              fontSize: '0.9rem'
+            }}>
+              {error}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', marginTop: '0.25rem' }}>
+            <button className="btn btn-outline" type="button" onClick={onClose}>Cancel</button>
+            <button className="btn btn-primary" type="submit">
+              {mode === 'register' ? 'Create Account' : 'Sign In'}
+            </button>
+          </div>
+
+          {mode === 'signin' && (
+            <a
+              href="#"
+              style={{ fontSize: '0.9rem', color: 'var(--secondary)', textDecoration: 'none' }}
+              onClick={(e) => {
+                e.preventDefault();
+                showToast('Password reset link sent (demo).');
+              }}
+            >
+              Forgot password?
+            </a>
+          )}
+        </div>
+      </form>
+    </div>
+  );
+};
+
+// My eBid Dashboard Component
+const MyEbidDashboard = ({ cart, wishlist, onClose, showToast }) => {
+  const activeBids = mockProducts.slice(0, 3);
+  const sellingItems = mockProducts.slice(5, 8);
+  const recentViews = mockProducts.slice(10, 13);
+  const accountStats = {
+    reputation: 4.8,
+    feedbackCount: 247,
+    sellerLevel: 'Platinum',
+    memberSince: 'Jan 15, 2020'
+  };
+
+  return (
+    <div style={{ display: 'grid', gap: '1.5rem' }}>
+      {/* Account Summary */}
+      <div style={{
+        background: 'linear-gradient(135deg, var(--primary) 0%, #1e293b 100%)',
+        borderRadius: 14,
+        padding: '1.5rem',
+        color: 'white'
+      }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+          <div>
+            <div style={{ fontSize: '0.9rem', color: '#cbd5e1', marginBottom: '0.25rem' }}>Username</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: 800 }}>PowerSeller25</div>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div>
+              <div style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>Reputation</div>
+              <div style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--secondary)' }}>⭐ {accountStats.reputation}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>Feedback</div>
+              <div style={{ fontSize: '1.3rem', fontWeight: 700 }}>{accountStats.feedbackCount}</div>
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <div style={{ fontSize: '0.9rem' }}>
+            <span style={{ color: '#cbd5e1' }}>Status:</span> <span style={{ fontWeight: 600, color: 'var(--secondary)' }}>{accountStats.sellerLevel}</span>
+          </div>
+          <div style={{ fontSize: '0.9rem' }}>
+            <span style={{ color: '#cbd5e1' }}>Member Since:</span> <span style={{ fontWeight: 600 }}>{accountStats.memberSince}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+        <div style={{ padding: '1rem', border: '1px solid var(--border-light)', borderRadius: 12, textAlign: 'center' }}>
+          <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--secondary)' }}>{cart.length}</div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>In Cart</div>
+        </div>
+        <div style={{ padding: '1rem', border: '1px solid var(--border-light)', borderRadius: 12, textAlign: 'center' }}>
+          <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--secondary)' }}>{wishlist.length}</div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Watchlist</div>
+        </div>
+        <div style={{ padding: '1rem', border: '1px solid var(--border-light)', borderRadius: 12, textAlign: 'center' }}>
+          <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--secondary)' }}>12</div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Active Bids</div>
+        </div>
+        <div style={{ padding: '1rem', border: '1px solid var(--border-light)', borderRadius: 12, textAlign: 'center' }}>
+          <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--secondary)' }}>8</div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>Selling</div>
+        </div>
+      </div>
+
+      {/* Active Bids */}
+      <div style={{ border: '1px solid var(--border-light)', borderRadius: 14, padding: '1rem' }}>
+        <h4 style={{ marginBottom: '1rem', color: 'var(--primary)', fontWeight: 700 }}>Your Active Bids (12)</h4>
+        <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '25vh', overflowY: 'auto' }}>
+          {activeBids.map(item => (
+            <div key={item.id} style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '0.75rem',
+              border: '1px solid var(--border-light)',
+              borderRadius: 10,
+              background: 'var(--bg-white)'
+            }}>
+              <div>
+                <div style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.9rem' }}>{item.title}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Your bid: <span style={{ fontWeight: 700, color: 'var(--secondary)' }}>$124.99</span></div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Time left: {item.timeLeft}</div>
+                <button 
+                  className="btn btn-outline"
+                  style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem', marginTop: '0.25rem' }}
+                  onClick={() => showToast(`Updated bid on ${item.title}`)}
+                >
+                  Change Bid
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Selling Items */}
+      <div style={{ border: '1px solid var(--border-light)', borderRadius: 14, padding: '1rem' }}>
+        <h4 style={{ marginBottom: '1rem', color: 'var(--primary)', fontWeight: 700 }}>Items You're Selling (8)</h4>
+        <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '25vh', overflowY: 'auto' }}>
+          {sellingItems.map(item => (
+            <div key={item.id} style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '0.75rem',
+              border: '1px solid var(--border-light)',
+              borderRadius: 10,
+              background: 'var(--bg-white)'
+            }}>
+              <div>
+                <div style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.9rem' }}>{item.title}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Price: {item.price} • Views: 324</div>
+              </div>
+              <button 
+                className="btn btn-outline"
+                style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem' }}
+                onClick={() => showToast(`Viewing stats for ${item.title}`)}
+              >
+                Stats
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Recent Views */}
+      <div style={{ border: '1px solid var(--border-light)', borderRadius: 14, padding: '1rem' }}>
+        <h4 style={{ marginBottom: '1rem', color: 'var(--primary)', fontWeight: 700 }}>Recently Viewed</h4>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '1rem' }}>
+          {recentViews.map(item => (
+            <div key={item.id} style={{
+              borderRadius: 10,
+              overflow: 'hidden',
+              border: '1px solid var(--border-light)',
+              cursor: 'pointer'
+            }}>
+              <img 
+                src={item.image} 
+                alt={item.title}
+                style={{ width: '100%', height: '100px', objectFit: 'cover' }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
+        <button className="btn btn-outline" onClick={onClose}>Close Dashboard</button>
+        <button 
+          className="btn btn-primary"
+          onClick={() => showToast('Opening Account Settings...')}
+        >
+          Account Settings
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Cart Panel Component
+const CartPanel = ({ cartItems, onRemoveItem, onClose, showToast, onCheckout }) => {
+  const total = cartItems.reduce((sum, item) => {
+    const price = parseFloat(item.price.replace('$', ''));
+    return sum + (price * (item.quantity || 1));
+  }, 0);
+
+  return (
+    <div style={{ display: 'grid', gap: '1rem' }}>
+      {cartItems.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
+          <p>Your cart is empty. Start shopping to add items!</p>
+        </div>
+      ) : (
+        <>
+          <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '50vh', overflowY: 'auto' }}>
+            {cartItems.map((item) => (
+              <div key={item.id} style={{
+                display: 'grid',
+                gridTemplateColumns: '80px 1fr 80px',
+                gap: '1rem',
+                padding: '1rem',
+                border: '1px solid var(--border-light)',
+                borderRadius: 12,
+                background: 'var(--bg-white)'
+              }}>
+                <img src={item.image} alt={item.title} style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: 8 }} />
+                <div style={{ display: 'grid', gap: '0.25rem' }}>
+                  <div style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.95rem' }}>
+                    {item.title}
+                  </div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                    {item.price} × {item.quantity || 1}
+                  </div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+                  <div style={{ fontWeight: 700, color: 'var(--secondary)' }}>
+                    ${(parseFloat(item.price.replace('$', '')) * (item.quantity || 1)).toFixed(2)}
+                  </div>
+                  <button 
+                    className="btn btn-outline" 
+                    style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem' }}
+                    onClick={() => {
+                      onRemoveItem(item.id);
+                      showToast(`Removed: ${item.title}`);
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', fontSize: '1.1rem', fontWeight: 700 }}>
+              <span>Total:</span>
+              <span style={{ color: 'var(--secondary)' }}>${total.toFixed(2)}</span>
+            </div>
+            <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <button className="btn btn-outline" onClick={onClose}>Continue Shopping</button>
+              <button className="btn btn-primary" onClick={() => { onCheckout(); onClose(); }}>Proceed to Checkout</button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+// Wishlist Panel Component
+const WishlistPanel = ({ wishlistItems, onRemoveItem, onClose, showToast }) => {
+  return (
+    <div style={{ display: 'grid', gap: '1rem' }}>
+      {wishlistItems.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
+          <p>Your wishlist is empty. Like items to save them for later!</p>
+        </div>
+      ) : (
+        <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '60vh', overflowY: 'auto' }}>
+          {wishlistItems.map((item) => (
+            <div key={item.id} style={{
+              display: 'grid',
+              gridTemplateColumns: '80px 1fr 100px',
+              gap: '1rem',
+              padding: '1rem',
+              border: '1px solid var(--border-light)',
+              borderRadius: 12,
+              background: 'var(--bg-white)',
+              alignItems: 'center'
+            }}>
+              <img src={item.image} alt={item.title} style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: 8 }} />
+              <div style={{ display: 'grid', gap: '0.5rem' }}>
+                <div style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '0.95rem' }}>
+                  {item.title}
+                </div>
+                <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+                  <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--secondary)' }}>{item.price}</span>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>({item.type})</span>
+                </div>
+              </div>
+              <button 
+                className="btn btn-outline" 
+                style={{ padding: '0.5rem 0.8rem', fontSize: '0.85rem' }}
+                onClick={() => {
+                  onRemoveItem(item.id);
+                  showToast(`Removed from wishlist: ${item.title}`);
+                }}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -116,11 +1047,51 @@ function App() {
   // Interaction States
   const [modalState, setModalState] = useState({ isOpen: false, title: '', body: '' });
   const [toastMessage, setToastMessage] = useState('');
+  const [cart, setCart] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
   // Handle showing toast that disappears after 3 seconds
   const showToast = (msg) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(''), 3000);
+  };
+
+  // Cart & Wishlist handlers
+  const addToCart = (product, e) => {
+    e.stopPropagation();
+    const existingItem = cart.find(item => item.id === product.id);
+    if (existingItem) {
+      setCart(cart.map(item => 
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      ));
+      showToast(`Updated ${product.title} in cart`);
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+      showToast(`Added to cart: ${product.title}`);
+    }
+  };
+
+  const addToWishlist = (product, e) => {
+    e.stopPropagation();
+    const isLiked = wishlist.find(item => item.id === product.id);
+    if (isLiked) {
+      setWishlist(wishlist.filter(item => item.id !== product.id));
+      showToast(`Removed from wishlist: ${product.title}`);
+    } else {
+      setWishlist([...wishlist, product]);
+      showToast(`Added to wishlist: ${product.title}`);
+    }
+  };
+
+  const placeBid = (product, e) => {
+    e.stopPropagation();
+    showToast(`Bid placed on ${product.title}. Current price: ${product.price}`);
+  };
+
+  const buyNow = (product, e) => {
+    e.stopPropagation();
+    setCart([...cart, { ...product, quantity: 1 }]);
+    showToast(`${product.title} added to cart! Ready to checkout.`);
   };
 
   const openModal = (title, body) => {
@@ -131,6 +1102,82 @@ function App() {
     setModalState(s => ({ ...s, isOpen: false }));
   };
 
+  const openAuthModal = () => {
+    setModalState({
+      isOpen: true,
+      title: 'Sign In or Register',
+      body: <AuthPanel onClose={closeModal} showToast={showToast} />
+    });
+  };
+
+  const openPlatinumUpgradeModal = () => {
+    const onLearnMore = () => {
+      openPlatinumLearnMoreModal();
+    };
+
+    setModalState({
+      isOpen: true,
+      title: 'Upgrade to Platinum',
+      body: (
+        <PlatinumUpgradePanel
+          onClose={closeModal}
+          showToast={showToast}
+          onLearnMore={onLearnMore}
+        />
+      )
+    });
+  };
+
+  const openPlatinumLearnMoreModal = () => {
+    const onUpgrade = () => {
+      openPlatinumUpgradeModal();
+    };
+
+    setModalState({
+      isOpen: true,
+      title: 'About eBid Platinum',
+      body: (
+        <PlatinumLearnMorePanel
+          onClose={closeModal}
+          showToast={showToast}
+          onUpgrade={onUpgrade}
+        />
+      )
+    });
+  };
+
+  const openDailyDealsModal = () => {
+    const deals = mockProducts.slice(0, 6).map((p, idx) => ({
+      ...p,
+      dealTag: idx % 2 === 0 ? 'Hot Deal' : 'Today Only'
+    }));
+
+    const onShopCategory = (category) => {
+      closeModal();
+      setActiveCategory(category);
+      setSearchQuery('');
+      window.scrollTo({ top: document.querySelector('.products-grid').offsetTop - 100, behavior: 'smooth' });
+      showToast(`Showing Daily Deals in ${category}`);
+    };
+
+    const onViewDeal = (deal) => {
+      showToast(`Viewing deal: ${deal.title}`);
+    };
+
+    setModalState({
+      isOpen: true,
+      title: 'Daily Deals',
+      body: (
+        <DailyDealsPanel
+          deals={deals}
+          onClose={closeModal}
+          onShopCategory={onShopCategory}
+          onViewDeal={onViewDeal}
+        />
+      )
+    });
+  };
+
   // Filter products by category AND search query
   const filteredProducts = mockProducts.filter(p => {
     const matchesCategory = activeCategory === "All Categories" || p.category === activeCategory;
@@ -138,13 +1185,67 @@ function App() {
     return matchesCategory && matchesSearch;
   });
 
+  const removeFromCart = (productId) => {
+    setCart(cart.filter(item => item.id !== productId));
+  };
+
+  const removeFromWishlist = (productId) => {
+    setWishlist(wishlist.filter(item => item.id !== productId));
+  };
+
+  const openCartModal = () => {
+    setModalState({
+      isOpen: true,
+      title: 'Shopping Cart',
+      body: (
+        <CartPanel 
+          cartItems={cart}
+          onRemoveItem={removeFromCart}
+          onClose={closeModal}
+          showToast={showToast}
+          onCheckout={() => showToast('Proceeding to checkout! (demo)')}
+        />
+      )
+    });
+  };
+
+  const openWishlistModal = () => {
+    setModalState({
+      isOpen: true,
+      title: 'Your Wishlist',
+      body: (
+        <WishlistPanel 
+          wishlistItems={wishlist}
+          onRemoveItem={removeFromWishlist}
+          onClose={closeModal}
+          showToast={showToast}
+        />
+      )
+    });
+  };
+
+  const openDashboardModal = () => {
+    setModalState({
+      isOpen: true,
+      title: 'My eBid Dashboard',
+      body: (
+        <MyEbidDashboard
+          cart={cart}
+          wishlist={wishlist}
+          onClose={closeModal}
+          showToast={showToast}
+        />
+      )
+    });
+  };
+
   return (
     <div className="app">
       {/* Utility Bar */}
       <div className="utility-bar">
         <div className="utility-links">
-          <a href="#" onClick={(e) => { e.preventDefault(); openModal('Sign In or Register', 'Login to your eBid account to manage your listings and bids.'); }}>Hi, Sign In or Register</a>
-          <a href="#" onClick={(e) => { e.preventDefault(); openModal('Daily Deals', 'Discover the best deals across all categories today! Savings up to 80%.'); }}>Daily Deals</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); openAuthModal(); }}>Hi, Sign In or Register</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); openDailyDealsModal(); }}>Daily Deals</a>
           <a href="#" onClick={(e) => { e.preventDefault(); openModal('eBid Stores', 'Browse dedicated storefronts built by our Power Sellers.'); }}><StoreIcon /> eBid Stores</a>
           <a href="#" onClick={(e) => { e.preventDefault(); openModal('Community Forum', 'Connect with other buyers and sellers in the eBid community.'); }}><ForumIcon /> Community</a>
         </div>
@@ -182,21 +1283,21 @@ function App() {
         </div>
 
         <div className="header-actions">
-           <button className="icon-btn active" onClick={() => openModal('My eBid Dashboard', 'Welcome back to your dashboard! Here you can check your sales, active bids, and account metrics.')}>
+           <button className="icon-btn" onClick={openDashboardModal}>
              <DashIcon />
              <span>My eBid</span>
            </button>
-           <button className="icon-btn" onClick={() => openModal('Your Watchlist', 'You currently have 0 items in your watchlist. Start browsing to save items for later.')}>
+           <button className="icon-btn" onClick={openWishlistModal}>
              <HeartIcon />
-             <span>Watchlist</span>
+             <span>Wishlist ({wishlist.length})</span>
            </button>
            <button className="icon-btn" onClick={() => openModal('Alerts & Notifications', 'You have no new notifications at this time.')}>
              <BellIcon />
              <span>Alerts</span>
            </button>
-           <button className="icon-btn" onClick={() => openModal('Shopping Cart', 'Your shopping cart is currently empty. Shop fixed-price items to add them to your cart.')}>
+           <button className="icon-btn" onClick={openCartModal}>
              <CartIcon />
-             <span>Cart</span>
+             <span>Cart ({cart.length})</span>
            </button>
            <button className="btn btn-primary" style={{marginLeft: '0.5rem'}} onClick={() => openModal('Sell an Item', 'Ready to make some money? Upload photos, set a description, and list your item with zero fees!')}>
              Sell Item
@@ -231,8 +1332,8 @@ function App() {
             <h1>The smarter way to buy and sell online.</h1>
             <p>Join the secure, fee-free alternative marketplace. Upgrade to Platinum Lifetime today and never pay listing fees again.</p>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <button className="btn btn-primary" onClick={() => openModal('Platinum Lifetime Upgrade', 'Upgrade to Platinum Lifetime for a one-time fee of $49.99 and enjoy ZERO listing fees forever.')}>Upgrade to Platinum</button>
-              <button className="btn btn-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)' }} onClick={() => openModal('About eBid Platinum', 'Learn how the Platinum tier gives you full access to eBid Stores, priority support, and advanced seller tools.')}>Learn More</button>
+              <button className="btn btn-primary" onClick={openPlatinumUpgradeModal}>Upgrade to Platinum</button>
+              <button className="btn btn-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)' }} onClick={openPlatinumLearnMoreModal}>Learn More</button>
             </div>
           </div>
           
@@ -287,15 +1388,15 @@ function App() {
         </div>
         <div className="products-grid">
            {filteredProducts.length > 0 ? filteredProducts.map((product) => (
-             <div key={product.id} className="product-card" style={{ cursor: 'pointer' }} onClick={() => openModal(product.title, `You are viewing ${product.title}. It is currently listed for ${product.price} as a ${product.type} listing.`)}>
+             <div key={product.id} className="product-card">
                <div className={`product-badge ${product.type === 'Auction' ? 'badge-auction' : 'badge-fixed'}`}>
                  {product.type}
                </div>
                <div className="product-image">
-                 <img src={product.image} alt={product.title} />
+                 <img src={product.image} alt={product.title} onClick={() => openModal(product.title, `You are viewing ${product.title}. It is currently listed for ${product.price} as a ${product.type} listing.`)} style={{cursor: 'pointer'}} />
                </div>
                <div className="product-content">
-                  <h3 className="product-title">{product.title}</h3>
+                  <h3 className="product-title" onClick={() => openModal(product.title, `You are viewing ${product.title}. It is currently listed for ${product.price} as a ${product.type} listing.`)} style={{cursor: 'pointer'}}>{product.title}</h3>
                   <div className="product-meta">
                      {product.type === 'Auction' ? (
                         <>
@@ -309,6 +1410,29 @@ function App() {
                      <div className="product-price">{product.price}</div>
                      {product.type === 'Auction' && (
                         <div className="product-bids">{product.bids} Bids</div>
+                     )}
+                  </div>
+                  <div className="product-actions">
+                     <button 
+                       className="product-btn product-btn-wishlist" 
+                       onClick={(e) => addToWishlist(product, e)}
+                       title={wishlist.find(item => item.id === product.id) ? "Remove from wishlist" : "Add to wishlist"}
+                     >
+                       <HeartIcon /> {wishlist.find(item => item.id === product.id) ? "Liked" : "Like"}
+                     </button>
+                     {product.type === 'Auction' ? (
+                       <button className="product-btn product-btn-primary" onClick={(e) => placeBid(product, e)}>
+                         Place Bid
+                       </button>
+                     ) : (
+                       <div style={{ display: 'flex', gap: '0.75rem' }}>
+                         <button className="product-btn product-btn-secondary" onClick={(e) => addToCart(product, e)}>
+                           <CartIcon /> Cart
+                         </button>
+                         <button className="product-btn product-btn-primary" style={{ flex: 1 }} onClick={(e) => buyNow(product, e)}>
+                           Buy Now
+                         </button>
+                       </div>
                      )}
                   </div>
                </div>
