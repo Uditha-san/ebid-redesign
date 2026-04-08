@@ -925,7 +925,7 @@ const CartPanel = ({ cartItems, onRemoveItem, onClose, showToast, onCheckout }) 
         </div>
       ) : (
         <>
-          <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '50vh', overflowY: 'auto' }}>
+          <div style={{ display: 'grid', gap: '0.75rem' }}>
             {cartItems.map((item) => (
               <div key={item.id} style={{
                 display: 'grid',
@@ -989,7 +989,7 @@ const WishlistPanel = ({ wishlistItems, onRemoveItem, onClose, showToast }) => {
           <p>Your wishlist is empty. Like items to save them for later!</p>
         </div>
       ) : (
-        <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '60vh', overflowY: 'auto' }}>
+        <div style={{ display: 'grid', gap: '0.75rem' }}>
           {wishlistItems.map((item) => (
             <div key={item.id} style={{
               display: 'grid',
@@ -1029,6 +1029,193 @@ const WishlistPanel = ({ wishlistItems, onRemoveItem, onClose, showToast }) => {
   );
 };
 
+// Sell Item Panel Component
+const SellItemPanel = ({ onClose, showToast }) => {
+  const [step, setStep] = useState(1);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    showToast('Your item has been successfully listed!');
+    onClose();
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
+      {step === 1 ? (
+        <>
+          <div style={{
+            border: '2px dashed var(--border)',
+            borderRadius: '12px',
+            padding: '2.5rem',
+            textAlign: 'center',
+            background: 'var(--bg-light)',
+            cursor: 'pointer',
+            transition: 'var(--transition)'
+          }}>
+            <div style={{ color: 'var(--secondary)', marginBottom: '0.5rem' }}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </div>
+            <div style={{ fontWeight: 600, color: 'var(--primary)', marginBottom: '0.25rem' }}>Add Photos</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Drag and drop or click to upload. First photo is the cover.</div>
+          </div>
+          
+          <label style={{ display: 'grid', gap: '0.35rem' }}>
+            <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Title</span>
+            <input
+              type="text"
+              required
+              placeholder="e.g., Apple iPhone 14 Pro - 128GB"
+              style={{ padding: '0.8rem 1rem', borderRadius: 10, border: '1px solid var(--border)', outline: 'none', background: 'var(--bg-white)', width: '100%', boxSizing: 'border-box' }}
+            />
+          </label>
+          
+          <label style={{ display: 'grid', gap: '0.35rem' }}>
+            <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Category</span>
+            <select
+              style={{ padding: '0.8rem 1rem', borderRadius: 10, border: '1px solid var(--border)', outline: 'none', background: 'var(--bg-white)', width: '100%', boxSizing: 'border-box' }}
+            >
+              <option>Select a Category...</option>
+              {menuCategories.filter(c => c !== "All Categories").map(c => <option key={c}>{c}</option>)}
+            </select>
+          </label>
+
+          <label style={{ display: 'grid', gap: '0.35rem' }}>
+            <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Condition</span>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {['New', 'Like New', 'Used / Good', 'For Parts'].map(cond => (
+                <label key={cond} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', border: '1px solid var(--border)', padding: '0.5rem 1rem', borderRadius: 50, cursor: 'pointer', background: 'var(--bg-white)' }}>
+                  <input type="radio" name="condition" value={cond} style={{accentColor: 'var(--secondary)'}} required />
+                  <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>{cond}</span>
+                </label>
+              ))}
+            </div>
+          </label>
+          
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
+            <button className="btn btn-primary" type="button" onClick={() => setStep(2)}>Next: Pricing & Details</button>
+          </div>
+        </>
+      ) : (
+        <>
+          <label style={{ display: 'grid', gap: '0.35rem' }}>
+            <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Description</span>
+            <textarea
+              required
+              rows="4"
+              placeholder="Describe the item's condition, features, and any flaws..."
+              style={{ padding: '0.8rem 1rem', borderRadius: 10, border: '1px solid var(--border)', outline: 'none', background: 'var(--bg-white)', width: '100%', resize: 'vertical', boxSizing: 'border-box' }}
+            ></textarea>
+          </label>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <label style={{ display: 'grid', gap: '0.35rem' }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Listing Format</span>
+              <select
+                style={{ padding: '0.8rem 1rem', borderRadius: 10, border: '1px solid var(--border)', outline: 'none', background: 'var(--bg-white)', width: '100%', boxSizing: 'border-box' }}
+              >
+                <option>Auction</option>
+                <option>Buy It Now</option>
+              </select>
+            </label>
+            <label style={{ display: 'grid', gap: '0.35rem' }}>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 600 }}>Price</span>
+              <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                <span style={{ position: 'absolute', left: '1rem', color: 'var(--text-muted)' }}>$</span>
+                <input
+                  type="number"
+                  required
+                  placeholder="0.00"
+                  style={{ padding: '0.8rem 1rem 0.8rem 2rem', borderRadius: 10, border: '1px solid var(--border)', outline: 'none', background: 'var(--bg-white)', width: '100%', boxSizing: 'border-box' }}
+                />
+              </div>
+            </label>
+          </div>
+          
+          <div style={{ 
+            padding: '1.25rem', 
+            borderRadius: 12, 
+            background: 'var(--primary)', 
+            color: 'white', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            marginTop: '0.5rem',
+            boxShadow: '0 4px 15px rgba(11, 17, 32, 0.15)'
+           }}>
+             <div>
+               <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>Listing Fees</div>
+               <div style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>This listing will cost you absolutely nothing.</div>
+             </div>
+             <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--secondary)' }}>$0<span style={{fontSize: '1rem'}}>.00</span></div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem' }}>
+            <button className="btn btn-outline" type="button" onClick={() => setStep(1)}>Back</button>
+            <button className="btn btn-primary" type="submit">List Item For Sale</button>
+          </div>
+        </>
+      )}
+    </form>
+  );
+};
+
+
+// Micro-Component: Drawer
+const Drawer = ({ isOpen, title, children, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="drawer-overlay" onClick={onClose}>
+      <div className="drawer" onClick={e => e.stopPropagation()}>
+        <div className="drawer-header">
+          <h3>{title}</h3>
+          <button className="icon-btn" onClick={onClose} aria-label="Close"><XIcon /></button>
+        </div>
+        <div className="drawer-body">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Alert Panel Component
+const AlertPanel = ({ onClose, showToast }) => {
+  const alerts = [
+    { id: 1, title: 'Item Relisted', message: 'The vintage watch you viewed was relisted.', time: '10m ago', unread: true },
+    { id: 2, title: 'Price Drop', message: 'A book in your wishlist dropped by 10%!', time: '1h ago', unread: true },
+    { id: 3, title: 'Bid Alert', message: 'Someone just placed a higher bid on the Antique Desk.', time: '3h ago', unread: false }
+  ];
+
+  return (
+    <div style={{ display: 'grid', gap: '0.75rem' }}>
+      {alerts.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
+          <p>You're all caught up! No new notifications.</p>
+        </div>
+      ) : (
+        alerts.map(a => (
+          <div key={a.id} style={{ 
+            padding: '1rem', 
+            border: '1px solid var(--border-light)', 
+            borderRadius: 12, 
+            background: a.unread ? '#f0fdf4' : 'var(--bg-white)',
+            position: 'relative',
+            boxShadow: 'var(--shadow-sm)'
+          }}>
+            {a.unread && <div style={{position: 'absolute', top: 12, right: 12, width: 8, height: 8, borderRadius: '50%', background: 'var(--secondary)'}} />}
+            <div style={{ fontWeight: 600, color: 'var(--primary)', marginBottom: '0.25rem', paddingRight: '1rem' }}>{a.title}</div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-main)' }}>{a.message}</div>
+            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem', fontWeight: 500 }}>{a.time}</div>
+          </div>
+        ))
+      )}
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+        <button className="btn btn-outline" style={{width: '100%', background: 'var(--bg-white)'}} onClick={() => { showToast('Marked all as read'); onClose(); }}>Mark all as read</button>
+      </div>
+    </div>
+  );
+};
+
 // Micro-Component: Toast
 const Toast = ({ message }) => {
   if (!message) return null;
@@ -1046,7 +1233,15 @@ function App() {
   
   // Interaction States
   const [modalState, setModalState] = useState({ isOpen: false, title: '', body: '' });
+  const [drawerState, setDrawerState] = useState({ isOpen: false, type: null });
   const [toastMessage, setToastMessage] = useState('');
+
+  const openDrawer = (type) => {
+    setDrawerState({ isOpen: true, type });
+  };
+  const closeDrawer = () => {
+    setDrawerState({ isOpen: false, type: null });
+  };
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
 
@@ -1239,6 +1434,14 @@ function App() {
     });
   };
 
+  const openSellItemModal = () => {
+    setModalState({
+      isOpen: true,
+      title: 'List an Item for Sale',
+      body: <SellItemPanel onClose={closeModal} showToast={showToast} />
+    });
+  };
+
   return (
     <div className="app">
       {/* Utility Bar */}
@@ -1287,19 +1490,19 @@ function App() {
              <DashIcon />
              <span>My eBid</span>
            </button>
-           <button className="icon-btn" onClick={openWishlistModal}>
+           <button className="icon-btn" onClick={() => openDrawer('wishlist')}>
              <HeartIcon />
              <span>Wishlist ({wishlist.length})</span>
            </button>
-           <button className="icon-btn" onClick={() => openModal('Alerts & Notifications', 'You have no new notifications at this time.')}>
+           <button className="icon-btn" onClick={() => openDrawer('alerts')}>
              <BellIcon />
              <span>Alerts</span>
            </button>
-           <button className="icon-btn" onClick={openCartModal}>
+           <button className="icon-btn" onClick={() => openDrawer('cart')}>
              <CartIcon />
              <span>Cart ({cart.length})</span>
            </button>
-           <button className="btn btn-primary" style={{marginLeft: '0.5rem'}} onClick={() => openModal('Sell an Item', 'Ready to make some money? Upload photos, set a description, and list your item with zero fees!')}>
+           <button className="btn btn-primary" style={{marginLeft: '0.5rem'}} onClick={openSellItemModal}>
              Sell Item
            </button>
         </div>
@@ -1467,7 +1670,7 @@ function App() {
              <div className="footer-col">
                 <h4>Sell</h4>
                 <ul>
-                  <li><a href="#" onClick={(e) => { e.preventDefault(); openModal('Start Selling', 'Ready to list your item?'); }}>Start Selling</a></li>
+                  <li><a href="#" onClick={(e) => { e.preventDefault(); openSellItemModal(); }}>Start Selling</a></li>
                   <li><a href="#" onClick={(e) => { e.preventDefault(); openModal('Seller Fees', 'Learn about our zero-fee structure!'); }}>Seller Fees</a></li>
                   <li><a href="#" onClick={(e) => { e.preventDefault(); showToast('Navigating to Affiliate Program...'); }}>Affiliate Program</a></li>
                 </ul>
@@ -1489,6 +1692,16 @@ function App() {
       
       {/* Portals / Overlay Components */}
       <Modal isOpen={modalState.isOpen} title={modalState.title} body={modalState.body} onClose={closeModal} />
+      
+      <Drawer isOpen={drawerState.isOpen} title={
+        drawerState.type === 'cart' ? 'Shopping Cart' : 
+        drawerState.type === 'wishlist' ? 'Your Wishlist' : 'Alerts & Notifications'
+      } onClose={closeDrawer}>
+        {drawerState.type === 'cart' && <CartPanel cartItems={cart} onRemoveItem={removeFromCart} onClose={closeDrawer} showToast={showToast} onCheckout={() => { showToast('Proceeding to checkout!'); closeDrawer(); }} />}
+        {drawerState.type === 'wishlist' && <WishlistPanel wishlistItems={wishlist} onRemoveItem={removeFromWishlist} onClose={closeDrawer} showToast={showToast} />}
+        {drawerState.type === 'alerts' && <AlertPanel onClose={closeDrawer} showToast={showToast} />}
+      </Drawer>
+
       <Toast message={toastMessage} />
     </div>
   );
