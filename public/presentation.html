@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>eBid Redesign Presentation</title>
+		
+		<!-- Reveal.js basic styles -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<!-- Modern light theme -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/simple.min.css" id="theme">
+		
+        <style>
+            /* Custom eBid Branding */
+            .reveal h1, .reveal h2, .reveal h3 { 
+                color: #0f172a; 
+                text-transform: none; 
+                font-weight: 800; 
+                letter-spacing: -1px;
+            }
+            .reveal .accent { color: #3b82f6; } /* eBid Primary Blue */
+            .reveal .accent-alt { color: #10b981; } /* eBid Secondary Green */
+            .reveal p, .reveal li { color: #334155; font-size: 1.1em; line-height: 1.4; }
+            .reveal ul { margin-left: 2em; }
+            .reveal li { margin-bottom: 0.5em; }
+            
+            /* Layout Helpers */
+            .slide-grid { 
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 30px; 
+                text-align: left; 
+                margin-top: 40px;
+            }
+            .slide-box { 
+                background: #f8fafc; 
+                padding: 30px; 
+                border-radius: 16px; 
+                border: 2px solid #e2e8f0; 
+                box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            }
+            .danger-box { border-color: #fca5a5; background: #fef2f2; }
+            .success-box { border-color: #6ee7b7; background: #ecfdf5; }
+            
+            .screenshot-placeholder {
+                width: 100%;
+                height: 250px;
+                background: #e2e8f0;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #64748b;
+                font-size: 0.8em;
+                border: 2px dashed #cbd5e1;
+            }
+
+            .badge {
+                display: inline-block;
+                padding: 5px 15px;
+                background: #1e293b;
+                color: white;
+                border-radius: 50px;
+                font-size: 0.5em;
+                vertical-align: middle;
+                margin-left: 10px;
+            }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- Slide 1: Title -->
+				<section>
+                    <br/><br/>
+					<h1>e<span class="accent">Bid</span> Redesign</h1>
+					<h3 style="color: #64748b;">Modern Usability & Cognitive Efficiency</h3>
+                    <br/>
+					<p style="font-weight: 600;">Group Presentation</p>
+                    <p style="font-size: 0.7em; color: #94a3b8;">UX / UI Application Pitch</p>
+				</section>
+
+				<!-- Slide 2: Problem Identification -->
+				<section>
+					<h2>Problem <span class="accent">Identification</span></h2>
+                    <br/>
+                    <div style="text-align: left; display: inline-block;">
+                        <ul>
+                            <li><b>Intrusive Modals:</b> Screen-blocking popups interrupted tasks.</li>
+                            <li><b>Poor Visual Hierarchy:</b> "Walls of text" made parsing difficult.</li>
+                            <li><b>Complex Onboarding:</b> "Sell Item" lacked progressive steps.</li>
+                            <li><b>Outdated Architecture:</b> Failed to use standard UI/UX patterns.</li>
+                        </ul>
+                    </div>
+				</section>
+
+				<!-- Slide 3: HCI Violations -->
+				<section>
+					<h2><span class="accent">HCI</span> Violations Identified</h2>
+                    <div class="slide-grid">
+                        <div class="slide-box danger-box">
+                            <h4>Miller’s Law <span style="font-size:1.5rem">📉</span></h4>
+                            <p style="font-size: 0.85em;">The original interface presented massive, unstructured text lists, causing <b>Working Memory Overload</b>.</p>
+                        </div>
+                        <div class="slide-box danger-box">
+                            <h4>Hick’s Law <span style="font-size:1.5rem">🌀</span></h4>
+                            <p style="font-size: 0.85em;">Dense drop-down elements paralyzed users through unstructured <b>Choice Overload</b>.</p>
+                        </div>
+                    </div>
+				</section>
+
+				<!-- Slide 4: Homepage Old Design -->
+				<section>
+					<h2>Homepage Redesign <span class="badge">Old Format</span></h2>
+                    <div class="slide-grid">
+                        <div>
+                            <div class="screenshot-placeholder">
+                                [ Screenshot of Old eCommerce Layout ]
+                            </div>
+                        </div>
+                        <div style="padding-top: 10px;">
+                            <ul>
+                                <li style="font-size: 0.9em;">Unclear Primary Call-to-Action.</li>
+                                <li style="font-size: 0.9em;">Categories relied on text-scanning.</li>
+                                <li style="font-size: 0.9em;">Value Propositions (e.g. Zero Fees) were buried.</li>
+                            </ul>
+                        </div>
+                    </div>
+				</section>
+
+				<!-- Slide 5: Homepage New Design -->
+				<section>
+					<h2>Homepage Redesign <span style="background: #10b981;" class="badge">Optimized</span></h2>
+                    <p style="font-size: 0.9em;">Prioritizing discovery with a centered search & hero value prop.</p>
+                    <br/>
+                    <div class="screenshot-placeholder" style="height: 350px;">
+                        [ Screenshot of our New Hero Section (Search Bar & Zero Fee Badge) ]
+                    </div>
+				</section>
+
+				<!-- Slide 6: Category Navigation Old -->
+				<section>
+					<h2>Category Navigation <span class="badge">Cognitive Load</span></h2>
+                    <br/>
+                    <blockquote>
+						&ldquo;Everything felt identical. The interface lacked distinct visual groupings or icons, making it difficult to scan for correct departments.&rdquo;
+					</blockquote>
+                    <p style="font-size: 0.8em; color: #ef4444;">Violation of Gestalt Grouping</p>
+				</section>
+
+				<!-- Slide 7: Category Navigation New -->
+				<section>
+					<h2>Category Navigation <span style="background: #10b981;" class="badge">Gestalt UI</span></h2>
+                    <div class="slide-grid">
+                        <div style="padding-top: 10px;">
+                            <ul>
+                                <li style="font-size: 0.9em;">Added dynamic grid-based "Shop Top Categories".</li>
+                                <li style="font-size: 0.9em;">Distinct iconography reduces text-parsing time.</li>
+                                <li style="font-size: 0.9em;"><b>Jakob's Law:</b> Users are familiar with icon-grids from Amazon/Ebay.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="screenshot-placeholder">
+                                [ Screenshot of Category Cards ]
+                            </div>
+                        </div>
+                    </div>
+				</section>
+
+				<!-- Slide 8: Utilities Old -->
+				<section>
+					<h2>Utility UI <span class="badge">Blocking Flow</span></h2>
+                    <br />
+                    <p><b>The Issue:</b> Checking the cart or alerts spawned massive centered popups.</p>
+                    <p style="font-size: 0.9em;">This completely blocked the store, breaking spatial context and stopping users from shopping.</p>
+				</section>
+
+				<!-- Slide 9: Utilities New -->
+				<section>
+					<h2>Utility UI <span style="background: #10b981;" class="badge">Slide Drawers</span></h2>
+                    <div class="slide-grid">
+                        <div class="slide-box success-box">
+                            <h4 style="margin: 0;">Spatial Consistency</h4>
+                            <p style="font-size: 0.8em;">Slide-out trays anchor users to their original tab.</p>
+                        </div>
+                        <div class="slide-box success-box">
+                            <h4 style="margin: 0;">Fitts's Law</h4>
+                            <p style="font-size: 0.8em;">Target keys grouped predictably to the top-right corner.</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.7em; margin-top: 20px;">[ Screenshot of the Side Drawer over blurred background ]</p>
+				</section>
+
+				<!-- Slide 10: Seller Flow Old -->
+				<section>
+					<h2>Seller Onboarding <span class="badge">Overload</span></h2>
+                    <p style="font-size: 0.9em;">Users were bombarded with form fields all at once, creating confusion about fees, item conditions, and listing options.</p>
+				</section>
+
+				<!-- Slide 11: Seller Flow New -->
+				<section>
+					<h2>Seller Onboarding <span style="background: #10b981;" class="badge">Chunking</span></h2>
+                    <br/>
+                    <p style="font-size: 0.9em;">We broke the complex process into a simple progressive 2-step wizard.</p>
+                    <div class="screenshot-placeholder">
+                        [ Screenshot of new Sell Item Form (Photo Drag-Drop area) ]
+                    </div>
+				</section>
+
+				<!-- Slide 12: Seller Flow New (Fees) -->
+				<section>
+					<h2>Seller Onboarding <span style="background: #10b981;" class="badge">Hick's Law</span></h2>
+                    <div class="slide-grid">
+                        <div>
+                            <div class="screenshot-placeholder">
+                                [ Screenshot of the $0.00 Inline Fee Box ]
+                            </div>
+                        </div>
+                        <div style="padding-top: 10px;">
+                            <ul>
+                                <li style="font-size: 0.9em;">Calculated transparent fee structure upfront.</li>
+                                <li style="font-size: 0.9em;">Condition variables simplified to pill buttons rather than deep dropdowns.</li>
+                            </ul>
+                        </div>
+                    </div>
+				</section>
+
+				<!-- Slide 13: Demo -->
+				<section data-background-color="#0f172a">
+                    <br/><br/>
+					<h1 style="color: white; font-size: 5em;">LIVE <span class="accent">DEMO</span></h1>
+                    <p style="color: #cbd5e1;">( Switch over to your local application tab! )</p>
+				</section>
+
+				<!-- Slide 14: Future Expansion -->
+				<section>
+					<h2>Future <span class="accent">Expansion</span></h2>
+                    <br/>
+                    <div style="text-align: left; display: inline-block;">
+                        <ul>
+                            <li><b>Backend Architecture:</b> Database & API Integrations.</li>
+                            <li><b>Financial Stack:</b> Live Stripe Payment Integration.</li>
+                            <li><b>Smart Discovery:</b> AI-powered Product Recommendations.</li>
+                            <li><b>Accessibility:</b> Enhancing WCAG contrast compliance.</li>
+                        </ul>
+                    </div>
+				</section>
+
+				<!-- Slide 15: Conclusion -->
+				<section>
+                    <br/><br/>
+					<h2><span class="accent">Thank</span> You!</h2>
+					<p style="font-size: 1.2em;">Any Questions?</p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+		<script>
+			// Initialize reveal.js presentation
+			Reveal.initialize({
+				hash: true,
+                transition: 'slide', // Options: none/fade/slide/convex/concave/zoom
+                controls: true,
+                progress: true,
+                center: true,
+			});
+		</script>
+	</body>
+</html>

@@ -353,7 +353,7 @@ const mockProducts = [
   }
 ];
 
-const menuCategories = ["All Categories", "Antiques", "Art", "Books & Comics", "Collectibles", "Electronics", "Home & Garden", "Sport Memorabilia", "Whatever's Left"];
+const menuCategories = ["Antiques & Art", "Books & Comics", "Collectibles", "Electronics", "Home & Garden", "Sport Memorabilia", "Misc"];
 
 // Micro-Component: Modal
 const Modal = ({ isOpen, title, body, onClose, actions }) => {
@@ -1510,6 +1510,20 @@ function App() {
 
       {/* Categories Mega Menu */}
       <nav className="nav-categories">
+        <a 
+          href="#" 
+          className={`nav-item ${activeCategory === "All Categories" ? 'active' : ''}`}
+          style={{ fontWeight: 700, color: 'var(--primary)' }}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveCategory("All Categories");
+            setSearchQuery('');
+            window.scrollTo({ top: document.querySelector('.products-grid').offsetTop - 100, behavior: 'smooth' });
+          }}
+        >
+          All Categories
+        </a>
+        <div style={{ width: '2px', height: '18px', background: 'var(--border-light)', margin: '0 0.5rem' }}></div>
         {menuCategories.map((cat) => (
           <a 
             key={cat}
@@ -1610,7 +1624,12 @@ function App() {
                      )}
                   </div>
                   <div className="product-price-row">
-                     <div className="product-price">{product.price}</div>
+                     <div>
+                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>
+                         {product.type === 'Auction' ? 'Current Bid' : 'Buy Now Price'}
+                       </div>
+                       <div className="product-price">{product.price}</div>
+                     </div>
                      {product.type === 'Auction' && (
                         <div className="product-bids">{product.bids} Bids</div>
                      )}
